@@ -1,5 +1,7 @@
 import { PRODUCTS } from '@/lib/constants';
 import ProductDetail from './ProductDetail';
+import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 
 export async function generateStaticParams() {
     return PRODUCTS.map((product) => ({
@@ -7,12 +9,34 @@ export async function generateStaticParams() {
     }));
 }
 
-export default async function Page({ params }: { params: Promise<{ id: string }> }) {
-    const { id } = await params;
-    const product = PRODUCTS.find(p => p.id === id);
+type Props = {
+    params: Promise<{ id: string }>
+}
+
+export async function generateMetadata(
+    { params }: Props
+): Promise<Metadata> {
+    const resolvedParams = await params;
+    const product = PRODUCTS.find((p) => p.id === resolvedParams.id);
 
     if (!product) {
-        return <div>Product not found</div>;
+        return {
+            title: 'Product Not Found',
+        }
+    }
+
+    return {
+        title: `${product.name} | iUpgrade`,
+        description: `Rent ${product.name} for ₹${product.monthlyRent.toLocaleString('en-IN')}/month. ${product.tagline}`,
+    }
+}
+
+export default async function Page({ params }: Props) {
+    const resolvedParams = await params;
+    const product = PRODUCTS.find(p => p.id === resolvedParams.id);
+
+    if (!product) {
+        notFound();
     }
 
     return <ProductDetail product={product} />;
