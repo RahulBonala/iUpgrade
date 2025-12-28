@@ -1,0 +1,95 @@
+.card {
+    background: var(--color-titanium-grey);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 280px;
+    position: relative;
+    display: block;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.imageContainer {
+    height: 320px;
+    background: #111;
+    position: relative;
+    overflow: hidden;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: scale 0.4s ease;
+}
+
+.card:hover .image {
+    scale: 1.05;
+}
+
+.badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(255, 95, 31, 0.9);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 99px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    z-index: 2;
+}
+
+.info {
+    padding: 24px;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.tagline {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    margin-bottom: 16px;
+}
+
+.pricing {
+    margin-top: 12px;
+}
+
+.rentRow {
+    display: flex;
+    align-items: baseline;
+    color: var(--color-cosmic-orange);
+}
+
+.currency {
+    font-size: 16px;
+    font-weight: 500;
+    margin-right: 2px;
+}
+
+.amount {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.period {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    margin-left: 4px;
+}
+
+.depositRow {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin-top: 6px;
+}

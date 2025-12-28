@@ -1,0 +1,22 @@
+.section {
+    padding: 80px 0;
+    background: var(--color-cosmic-black);
+}
+
+.sectionTitle {
+    font-size: 32px;
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 32px;
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

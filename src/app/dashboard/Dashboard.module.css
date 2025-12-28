@@ -1,0 +1,128 @@
+.page {
+    min-height: 100vh;
+    background: var(--color-cosmic-black);
+}
+
+.heading {
+    margin-bottom: 40px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 32px;
+}
+
+.card {
+    background: var(--color-titanium-grey);
+    border-radius: 20px;
+    padding: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.status {
+    background: rgba(0, 255, 0, 0.1);
+    color: #4CAF50;
+    padding: 4px 12px;
+    border-radius: 99px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.productRow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.productIcon {
+    width: 48px;
+    height: 48px;
+    background: #333;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.productName {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.productMeta {
+    color: #888;
+    font-size: 14px;
+}
+
+.progressBar {
+    height: 8px;
+    background: #333;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 12px 0;
+}
+
+.progressFill {
+    background: var(--color-cosmic-orange);
+    height: 100%;
+}
+
+.progressHeader {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 500;
+    color: #ccc;
+}
+
+.progressNote {
+    font-size: 12px;
+    color: #666;
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 24px;
+}
+
+.statCard {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 24px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.icon {
+    color: var(--color-cosmic-orange);
+    margin-bottom: 12px;
+}
+
+.statValue {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.statLabel {
+    font-size: 12px;
+    color: #888;
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

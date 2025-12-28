@@ -1,0 +1,172 @@
+.page {
+    min-height: 100vh;
+    background: black;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 60px;
+    gap: 12px;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.4;
+    transition: opacity 0.3s;
+}
+
+.step[data-active="true"] {
+    opacity: 1;
+}
+
+.indicator {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.step[data-active="true"] .indicator {
+    background: var(--color-cosmic-orange);
+    border-color: var(--color-cosmic-orange);
+    color: white;
+}
+
+.line {
+    width: 60px;
+    height: 1px;
+    background: #333;
+}
+
+.line[data-active="true"] {
+    background: var(--color-cosmic-orange);
+}
+
+.content {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.card {
+    background: var(--color-titanium-grey);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 32px;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.input {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid #333;
+    padding: 16px;
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+}
+
+.btnPrimary {
+    background: white;
+    color: black;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+}
+
+.iconWrapper {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 95, 31, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+}
+
+.successBanner {
+    background: rgba(0, 255, 0, 0.1);
+    color: #4CAF50;
+    padding: 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    font-size: 14px;
+}
+
+.summary {
+    margin: 24px 0;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    color: #ccc;
+    font-size: 14px;
+}
+
+.totalRow {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.paymentMethods {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.payBtn {
+    width: 100%;
+    padding: 16px;
+    background: var(--color-cosmic-orange);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.secureText {
+    text-align: center;
+    font-size: 11px;
+    color: #666;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
