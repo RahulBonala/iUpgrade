@@ -29,7 +29,7 @@ export default function ProductDetail({ product }: { product: Product }) {
                         <div className={styles.imagePlaceholder}>
                             <div className={styles.glow} style={{ background: selectedColor === 'Cosmic Orange' ? 'var(--color-orange-glow)' : 'rgba(255,255,255,0.1)' }} />
                             <Image
-                                src={`https://placehold.co/600x800/1a1a1a/FFF?text=${product.name}+${selectedColor}`}
+                                src={product.image}
                                 alt={product.name}
                                 width={600}
                                 height={800}

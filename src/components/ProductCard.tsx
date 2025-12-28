@@ -15,7 +15,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             <div className={styles.imageContainer}>
                 <div className={styles.badge}>Trending</div>
                 <Image
-                    src={`https://placehold.co/400x500/1e1e1f/FFF?text=${product.name}`}
+                    src={product.image}
                     alt={product.name}
                     width={400}
                     height={500}
