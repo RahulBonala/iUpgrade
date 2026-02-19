@@ -7,14 +7,32 @@ import styles from './Checkout.module.css';
 import { Camera, Lock, CheckCircle } from 'lucide-react';
 import { PRODUCTS } from '@/lib/constants';
 
+import { useRouter } from 'next/navigation';
+
 function CheckoutContent() {
     const [step, setStep] = useState(1);
     const [kycCompleted, setKycCompleted] = useState(false);
     const searchParams = useSearchParams();
+    const router = useRouter();
     const productId = searchParams.get('productId');
     const product = PRODUCTS.find(p => p.id === productId) || PRODUCTS[0];
 
     const totalDue = product.baseDeposit + product.monthlyRent;
+
+    const handlePayment = () => {
+        // Simulate payment processing
+        const win = window.open('', '_blank', 'width=500,height=600');
+        if (win) {
+            win.document.write('<h1>Processing Payment...</h1><p>Please wait while we secure your deposit.</p>');
+            setTimeout(() => {
+                win.document.body.innerHTML += '<h2 style="color:green">Payment Successful!</h2>';
+                setTimeout(() => {
+                    win.close();
+                    router.push('/checkout/success');
+                }, 1000);
+            }, 2000);
+        }
+    };
 
     const handleKycStart = () => {
         // Simulate Video KYC process
@@ -93,8 +111,8 @@ function CheckoutContent() {
                         </div>
 
                         <div className={styles.paymentMethods}>
-                            <button className={styles.payBtn}>Pay via UPI (Razorpay)</button>
-                            <button className={styles.payBtn}>Credit Card</button>
+                            <button className={styles.payBtn} onClick={handlePayment}>Pay via UPI (Razorpay)</button>
+                            <button className={styles.payBtn} onClick={handlePayment}>Credit Card</button>
                         </div>
 
                         <p className={styles.secureText}><Lock size={12} /> 128-bit Secure SSL Payment</p>

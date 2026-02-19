@@ -49,6 +49,7 @@ export default function Hero() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1, delay: 0.6 }}
+                style={{ willChange: 'opacity, transform' }}
             >
                 <div className={styles.placeholderImage}>
                     {/* Placeholder for iPhone 17 Pro Max Render */}
@@ -60,6 +61,7 @@ export default function Hero() {
                         height={600}
                         className={styles.phoneImg}
                         priority
+                        style={{ objectFit: 'contain' }}
                     />
                 </div>
             </motion.div>
