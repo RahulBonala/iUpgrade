@@ -1,4 +1,3 @@
-import Navbar from '@/components/Navbar';
 import ProductCard from '@/components/ProductCard';
 import { PRODUCTS } from '@/lib/constants';
 
@@ -10,7 +9,6 @@ export const metadata = {
 export default function Catalog() {
     return (
         <main>
-            <Navbar />
             <div className="container" style={{ paddingTop: '100px', paddingBottom: '80px' }}>
                 <h1 className="text-gradient" style={{
                     fontSize: '48px',

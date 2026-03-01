@@ -19,6 +19,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                     alt={product.name}
                     width={400}
                     height={500}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className={styles.image}
                 />
             </div>

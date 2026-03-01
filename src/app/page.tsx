@@ -1,11 +1,9 @@
-import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import TrendingList from '@/components/TrendingList';
 
 export default function Home() {
     return (
         <main>
-            <Navbar />
             <Hero />
             <TrendingList />
             <section style={{ height: '20vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

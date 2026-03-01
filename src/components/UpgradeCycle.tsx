@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { RefreshCcw, ArrowRight } from 'lucide-react';
 
 export default function UpgradeCycle() {

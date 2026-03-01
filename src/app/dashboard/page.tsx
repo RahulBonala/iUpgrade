@@ -1,13 +1,11 @@
 'use client';
 
-import Navbar from '@/components/Navbar';
 import { Clock, RefreshCw } from 'lucide-react';
 import styles from './Dashboard.module.css';
 
 export default function Dashboard() {
     return (
         <main className={styles.page}>
-            <Navbar />
             <div className="container" style={{ paddingTop: '100px' }}>
                 <h1 className={styles.heading}>Welcome back, Arjun</h1>
 

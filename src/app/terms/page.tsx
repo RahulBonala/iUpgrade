@@ -1,11 +1,8 @@
 'use client';
 
-import Navbar from '@/components/Navbar';
-
 export default function Terms() {
     return (
         <main style={{ background: 'var(--color-cosmic-black)', minHeight: '100vh', paddingBottom: '80px' }}>
-            <Navbar />
             <div className="container" style={{ paddingTop: '100px', maxWidth: '800px', color: '#ccc' }}>
                 <h1 className="text-gradient" style={{ marginBottom: '40px' }}>Terms & Conditions</h1>
 

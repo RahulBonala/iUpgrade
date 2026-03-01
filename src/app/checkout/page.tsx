@@ -2,7 +2,6 @@
 
 import { useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-import Navbar from '@/components/Navbar';
 import styles from './Checkout.module.css';
 import { Camera, Lock, CheckCircle } from 'lucide-react';
 import { PRODUCTS } from '@/lib/constants';
@@ -12,6 +11,8 @@ import { useRouter } from 'next/navigation';
 function CheckoutContent() {
     const [step, setStep] = useState(1);
     const [kycCompleted, setKycCompleted] = useState(false);
+    const [paymentError, setPaymentError] = useState<string | null>(null);
+    const [isProcessing, setIsProcessing] = useState(false);
     const searchParams = useSearchParams();
     const router = useRouter();
     const productId = searchParams.get('productId');
@@ -20,31 +21,41 @@ function CheckoutContent() {
     const totalDue = product.baseDeposit + product.monthlyRent;
 
     const handlePayment = () => {
-        // Simulate payment processing
+        setPaymentError(null);
+        setIsProcessing(true);
         const win = window.open('', '_blank', 'width=500,height=600');
-        if (win) {
-            win.document.write('<h1>Processing Payment...</h1><p>Please wait while we secure your deposit.</p>');
-            setTimeout(() => {
-                win.document.body.innerHTML += '<h2 style="color:green">Payment Successful!</h2>';
-                setTimeout(() => {
-                    win.close();
-                    router.push('/checkout/success');
-                }, 1000);
-            }, 2000);
+        if (!win || win.closed) {
+            setPaymentError('Popup was blocked. Please allow popups for this site and try again.');
+            setIsProcessing(false);
+            return;
         }
+        win.document.write('<h1>Processing Payment...</h1><p>Please wait while we secure your deposit.</p>');
+        setTimeout(() => {
+            if (win.closed) {
+                setPaymentError('Payment window was closed. Please try again.');
+                setIsProcessing(false);
+                return;
+            }
+            win.document.body.innerHTML += '<h2 style="color:green">Payment Successful!</h2>';
+            setTimeout(() => {
+                win.close();
+                router.push('/checkout/success');
+            }, 1000);
+        }, 2000);
     };
 
     const handleKycStart = () => {
-        // Simulate Video KYC process
         const win = window.open('', '_blank', 'width=800,height=600');
-        if (win) {
-            win.document.write('<h1>Connecting to Verification Agent...</h1><p>Please allow camera access.</p>');
-            setTimeout(() => {
-                win.document.body.innerHTML += '<h2 style="color:green">Verification Successful!</h2><button onclick="window.close()">Close</button>';
-                setKycCompleted(true);
-                setStep(3); // Move to payment
-            }, 3000);
+        if (!win || win.closed) {
+            return;
         }
+        win.document.write('<h1>Connecting to Verification Agent...</h1><p>Please allow camera access.</p>');
+        setTimeout(() => {
+            if (win.closed) return;
+            win.document.body.innerHTML += '<h2 style="color:green">Verification Successful!</h2><button onclick="window.close()">Close</button>';
+            setKycCompleted(true);
+            setStep(3);
+        }, 3000);
     };
 
     return (
@@ -110,9 +121,16 @@ function CheckoutContent() {
                             <div className={styles.totalRow}><span>Total Payable</span><span>₹{totalDue.toLocaleString('en-IN')}</span></div>
                         </div>
 
+                        {paymentError && (
+                            <p style={{ color: '#ef4444', fontSize: '14px', marginBottom: '16px' }}>{paymentError}</p>
+                        )}
                         <div className={styles.paymentMethods}>
-                            <button className={styles.payBtn} onClick={handlePayment}>Pay via UPI (Razorpay)</button>
-                            <button className={styles.payBtn} onClick={handlePayment}>Credit Card</button>
+                            <button className={styles.payBtn} onClick={handlePayment} disabled={isProcessing}>
+                                {isProcessing ? 'Processing…' : 'Pay via UPI (Razorpay)'}
+                            </button>
+                            <button className={styles.payBtn} onClick={handlePayment} disabled={isProcessing}>
+                                {isProcessing ? 'Processing…' : 'Credit Card'}
+                            </button>
                         </div>
 
                         <p className={styles.secureText}><Lock size={12} /> 128-bit Secure SSL Payment</p>
@@ -126,7 +144,6 @@ function CheckoutContent() {
 export default function Checkout() {
     return (
         <main className={styles.page}>
-            <Navbar />
             <Suspense fallback={<div className="container" style={{ paddingTop: '100px', textAlign: 'center' }}>Loading checkout...</div>}>
                 <CheckoutContent />
             </Suspense>

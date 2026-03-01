@@ -1,27 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { Product, PRODUCTS } from '@/lib/constants'; // Added PRODUCTS import
-import Navbar from '@/components/Navbar';
+import { Product } from '@/lib/constants';
 import UpgradeCycle from '@/components/UpgradeCycle';
 import styles from './ProductDetail.module.css';
 import { ShieldCheck, Database, Palette } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link'; // Re-added Link import
-// Removed 'next' metadata import because this is a client component ('use client')
-// Metadata must be in a separate server component or layout, OR we use basic implementation without dynamic metadata for MVP in client component.
-// Wait, Next.js 13+ App Router allows generateMetadata in page.tsx (Server Component), but this file is 'use client'.
-// The 'page.tsx' that imports this should handle metadata, or I split this.
-// For now, to unblock build, I will REMOVE generateMetadata from this Client Component.
-// I will move generateMetadata to the parent 'page.tsx'.
+import Link from 'next/link';
 
 export default function ProductDetail({ product }: { product: Product }) {
     const [selectedColor, setSelectedColor] = useState(product.colors[0]);
 
     return (
         <div className={styles.page}>
-            <Navbar />
-
             <div className={`container ${styles.grid}`}>
                 {/* Visual Section */}
                 <div className={styles.visualColumn}>

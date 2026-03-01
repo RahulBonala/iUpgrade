@@ -2,13 +2,11 @@
 
 import Link from 'next/link';
 import { CheckCircle, Package, Calendar } from 'lucide-react';
-import Navbar from '@/components/Navbar';
 import { motion } from 'framer-motion';
 
 export default function CheckoutSuccess() {
     return (
         <main style={{ minHeight: '100vh', background: 'var(--color-cosmic-black)' }}>
-            <Navbar />
             <div className="container" style={{ paddingTop: '120px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
 
                 <motion.div
