@@ -34,10 +34,8 @@ export default function Error({
                 <button className="btn-primary" onClick={reset}>
                     Try again
                 </button>
-                <Link href="/">
-                    <button className="btn-primary" style={{ background: 'var(--color-titanium-grey)' }}>
-                        Back to home
-                    </button>
+                <Link href="/" className="btn-primary" style={{ background: 'var(--color-titanium-grey)', display: 'inline-block' }}>
+                    Back to home
                 </Link>
             </div>
         </div>

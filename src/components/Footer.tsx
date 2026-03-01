@@ -16,8 +16,8 @@ export default function Footer() {
                 </div>
                 <div style={{ display: 'flex', gap: '20px' }}>
                     <Link href="/terms" style={{ color: '#888', fontSize: '12px' }}>Terms & Conditions</Link>
-                    <Link href="#" style={{ color: '#888', fontSize: '12px' }}>Privacy Policy</Link>
-                    <Link href="#" style={{ color: '#888', fontSize: '12px' }}>Support</Link>
+                    <Link href="/privacy" style={{ color: '#888', fontSize: '12px' }}>Privacy Policy</Link>
+                    <Link href="/support" style={{ color: '#888', fontSize: '12px' }}>Support</Link>
                 </div>
             </div>
         </footer>
