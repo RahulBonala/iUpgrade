@@ -6,10 +6,34 @@ import UpgradeCycle from '@/components/UpgradeCycle';
 import styles from './ProductDetail.module.css';
 import { ShieldCheck, Database, Palette } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useCartStore } from '@/lib/store';
+
+const STORAGE_OPTIONS = [
+  { label: '256GB', priceBump: 0 },
+  { label: '512GB', priceBump: 500 },
+  { label: '1TB', priceBump: 1000 },
+];
 
 export default function ProductDetail({ product }: { product: Product }) {
     const [selectedColor, setSelectedColor] = useState(product.colors[0]);
+    const [selectedStorage, setSelectedStorage] = useState(STORAGE_OPTIONS[0]);
+
+    const router = useRouter();
+    const addItem = useCartStore(s => s.addItem);
+
+    const currentMonthlyPrice = product.monthlyRent + selectedStorage.priceBump;
+    const totalDueToday = product.baseDeposit + currentMonthlyPrice;
+
+    const handleReserve = () => {
+        addItem({
+            product,
+            storage: selectedStorage.label as any,
+            color: selectedColor,
+            monthlyPrice: currentMonthlyPrice,
+        });
+        router.push('/checkout');
+    };
 
     return (
         <div className={styles.page}>
@@ -32,7 +56,7 @@ export default function ProductDetail({ product }: { product: Product }) {
                     </div>
                 </div>
 
-                {/* Configuraion Section */}
+                {/* Configuration Section */}
                 <div className={styles.configColumn}>
                     <div className={styles.header}>
                         <h1 className={styles.title}>{product.name}</h1>
@@ -67,9 +91,16 @@ export default function ProductDetail({ product }: { product: Product }) {
                             <Database size={18} /> Storage
                         </h3>
                         <div className={styles.storageGrid}>
-                            <button className={`${styles.storageBtn} ${styles.selected}`}>256GB</button>
-                            <button className={styles.storageBtn}>512GB <span className={styles.priceBump}>+₹500/mo</span></button>
-                            <button className={styles.storageBtn}>1TB <span className={styles.priceBump}>+₹1000/mo</span></button>
+                            {STORAGE_OPTIONS.map(opt => (
+                                <button
+                                    key={opt.label}
+                                    className={`${styles.storageBtn} ${selectedStorage.label === opt.label ? styles.selected : ''}`}
+                                    onClick={() => setSelectedStorage(opt)}
+                                >
+                                    {opt.label}
+                                    {opt.priceBump > 0 && <span className={styles.priceBump}>+₹{opt.priceBump}/mo</span>}
+                                </button>
+                            ))}
                         </div>
                     </div>
 
@@ -78,7 +109,7 @@ export default function ProductDetail({ product }: { product: Product }) {
                             <span className={styles.label}>Monthly Rental</span>
                             <div className={styles.priceValue}>
                                 <span className={styles.currency}>₹</span>
-                                {product.monthlyRent.toLocaleString('en-IN')}
+                                {currentMonthlyPrice.toLocaleString('en-IN')}
                                 <span className={styles.period}>/mo</span>
                             </div>
                         </div>
@@ -103,12 +134,12 @@ export default function ProductDetail({ product }: { product: Product }) {
 
                         <div className={styles.totalRow}>
                             <span>Due Today (Deposit + 1st Month)</span>
-                            <span className={styles.totalValue}>₹{(product.baseDeposit + product.monthlyRent).toLocaleString('en-IN')}</span>
+                            <span className={styles.totalValue}>₹{totalDueToday.toLocaleString('en-IN')}</span>
                         </div>
 
-                        <Link href={`/checkout?productId=${product.id}`} className={styles.checkoutBtn}>
+                        <button onClick={handleReserve} className={`btn-primary ${styles.checkoutBtn}`} style={{ width: '100%', display: 'block', textAlign: 'center', marginTop: '24px' }}>
                             Reserve Now
-                        </Link>
+                        </button>
                         <p className={styles.disclaimer}>*KYC verification required before delivery.</p>
                     </div>
 

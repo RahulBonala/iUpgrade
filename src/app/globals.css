@@ -19,6 +19,25 @@
   /* Spacing & Layout */
   --max-width: 1200px;
   --header-height: 64px;
+
+  /* NEW Design System additions */
+  --color-success: #30d158;
+  --color-warning: #ffd60a;
+  --color-error: #ff453a;
+  --color-info: #0a84ff;
+  --color-surface-1: #111111;
+  --color-surface-2: #1c1c1e;
+  --color-surface-3: #2c2c2e;
+  --color-border-subtle: rgba(255, 255, 255, 0.06);
+  --color-border-default: rgba(255, 255, 255, 0.1);
+  --color-border-strong: rgba(255, 255, 255, 0.2);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 980px;
+  --transition-fast: 0.15s ease;
+  --transition-default: 0.3s ease;
+  --transition-slow: 0.6s ease;
 }
 
 * {
@@ -105,4 +124,20 @@ button {
   border-top-color: var(--color-cosmic-orange);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
+}
+
+/* NEW utility classes */
+.surface-1 { background: var(--color-surface-1); }
+.surface-2 { background: var(--color-surface-2); }
+.surface-3 { background: var(--color-surface-3); }
+
+.badge-new {
+  background: var(--color-cosmic-orange);
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
