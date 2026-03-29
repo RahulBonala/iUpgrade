@@ -1,19 +1,14 @@
 'use client';
 
-import { useEffect } from 'react';
 import Link from 'next/link';
 
 export default function Error({
-    error,
+    error: _error,
     reset,
 }: {
     error: Error & { digest?: string };
     reset: () => void;
 }) {
-    useEffect(() => {
-        console.error(error);
-    }, [error]);
-
     return (
         <div className="container" style={{
             paddingTop: '120px',
@@ -28,7 +23,7 @@ export default function Error({
                 Something went wrong
             </h1>
             <p style={{ color: 'var(--color-text-secondary)', marginBottom: '24px', maxWidth: '400px' }}>
-                We couldn’t load this page. Please try again.
+                We couldn&apos;t load this page. Please try again.
             </p>
             <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center' }}>
                 <button className="btn-primary" onClick={reset}>

@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useCartStore, useUserStore } from '@/lib/store';
 import { toast } from 'react-hot-toast';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, ShieldCheck, CreditCard, ChevronRight } from 'lucide-react';
+import { CheckCircle2, ShieldCheck, CreditCard } from 'lucide-react';
 import Image from 'next/image';
 
 export default function CheckoutPage() {
@@ -22,7 +22,7 @@ export default function CheckoutPage() {
     const [otpSent, setOtpSent] = useState(false);
 
     // Step 2 State
-    const [kycCompleted, setKycCompleted] = useState(false);
+    const [_kycCompleted, setKycCompleted] = useState(false);
     
     // Redirect if cart empty
     useEffect(() => {
@@ -84,8 +84,8 @@ export default function CheckoutPage() {
             description: `Rental Checkout`,
             prefill: { contact: phone },
             theme: { color: '#ff5f1f' },
-            handler: (response: any) => {
-                const orderId = response.razorpay_payment_id || 'pay_' + Math.random().toString(36).substr(2, 9);
+            handler: (response: { razorpay_payment_id?: string }) => {
+                const orderId = response.razorpay_payment_id || 'pay_' + Math.random().toString(36).substring(2, 11);
                 clearCart();
                 router.push(`/checkout/success?orderId=${orderId}`);
             },
@@ -93,7 +93,7 @@ export default function CheckoutPage() {
                 ondismiss: () => toast('Payment cancelled. Your cart is saved.')
             }
         };
-        const rzp = new (window as any).Razorpay(options);
+        const rzp = new (window as unknown as { Razorpay: new (_opts: typeof options) => { open: () => void } }).Razorpay(options);
         rzp.open();
     };
 

@@ -86,7 +86,7 @@ export default function Catalog() {
           </div>
           <select
             value={sortBy}
-            onChange={e => setSortBy(e.target.value as any)}
+            onChange={e => setSortBy(e.target.value as 'price-asc' | 'price-desc' | 'name')}
             style={{
               padding: '10px 16px', background: 'var(--glass-bg)',
               border: '1px solid var(--glass-border)', borderRadius: 'var(--radius-md)',

@@ -1,0 +1,9 @@
+# Sitemap
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /checkout
+Disallow: /orders
+Disallow: /api/
+
+Sitemap: https://iupgrade.in/sitemap.xml

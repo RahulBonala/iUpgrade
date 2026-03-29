@@ -28,7 +28,7 @@ export default function ProductDetail({ product }: { product: Product }) {
     const handleReserve = () => {
         addItem({
             product,
-            storage: selectedStorage.label as any,
+            storage: selectedStorage.label as '256GB' | '512GB' | '1TB',
             color: selectedColor,
             monthlyPrice: currentMonthlyPrice,
         });

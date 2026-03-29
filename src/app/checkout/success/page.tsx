@@ -2,12 +2,12 @@
 
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { CheckCircle2, Package, Truck, Box } from 'lucide-react';
+import { CheckCircle2, Truck, Box } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function CheckoutSuccessPage() {
   const searchParams = useSearchParams();
-  const orderId = searchParams?.get('orderId') || 'ORD-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+  const orderId = searchParams?.get('orderId') || 'ORD-' + Math.random().toString(36).substring(2, 11).toUpperCase();
 
   return (
     <main className="container" style={{ paddingTop: '120px', paddingBottom: '120px', maxWidth: '600px', textAlign: 'center' }}>

@@ -1,12 +1,16 @@
 {
   "name": "i-upgrade",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -32,6 +36,7 @@
     "@types/react-dom": "^19.0.0",
     "eslint": "^8.0.0",
     "eslint-config-next": "15.0.0",
+    "prettier": "^3.8.1",
     "typescript": "^5.0.0"
   }
 }

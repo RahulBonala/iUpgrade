@@ -6,7 +6,7 @@ interface UpgradeCountdownRingProps {
   totalMonths: number;
 }
 
-export default function UpgradeCountdownRing({ progressPercent, monthsLeft, totalMonths }: UpgradeCountdownRingProps) {
+export default function UpgradeCountdownRing({ progressPercent, monthsLeft, totalMonths: _totalMonths }: UpgradeCountdownRingProps) {
   const radius = 60;
   const stroke = 8;
   const normalizedRadius = radius - stroke * 2;

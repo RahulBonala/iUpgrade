@@ -4,8 +4,7 @@ import { useUserStore } from '@/lib/store';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import UpgradeCountdownRing from '@/components/UpgradeCountdownRing';
-import { Package, ShieldCheck, CreditCard, ChevronRight } from 'lucide-react';
-import Link from 'next/link';
+import { CreditCard } from 'lucide-react';
 
 // Mock rental data (to be replaced with API in production)
 const MOCK_RENTAL = {
