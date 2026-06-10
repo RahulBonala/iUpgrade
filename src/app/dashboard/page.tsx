@@ -2,7 +2,8 @@
 
 import { useUserStore } from '@/lib/store';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import UpgradeCountdownRing from '@/components/UpgradeCountdownRing';
 import { CreditCard } from 'lucide-react';
 
@@ -21,14 +22,22 @@ const MOCK_RENTAL = {
 export default function DashboardPage() {
     const { phone } = useUserStore();
     const router = useRouter();
+    // Wait for the persisted session to rehydrate before deciding whether
+    // the user is logged in — otherwise a page refresh always bounces to /login.
+    const [hydrated, setHydrated] = useState(useUserStore.persist.hasHydrated());
 
     useEffect(() => {
-        if (!phone) {
+        const unsub = useUserStore.persist.onFinishHydration(() => setHydrated(true));
+        return unsub;
+    }, []);
+
+    useEffect(() => {
+        if (hydrated && !phone) {
             router.push('/login');
         }
-    }, [phone, router]);
+    }, [hydrated, phone, router]);
 
-    if (!phone) return null;
+    if (!hydrated || !phone) return null;
 
     const progressPercent = (MOCK_RENTAL.paidMonths / MOCK_RENTAL.totalMonths) * 100;
     const monthsUntilUpgrade = MOCK_RENTAL.totalMonths - MOCK_RENTAL.paidMonths;
@@ -73,7 +82,13 @@ export default function DashboardPage() {
                         />
                         <div style={{ textAlign: 'center', maxWidth: '200px' }}>
                             {monthsUntilUpgrade <= 3 ? (
-                                <button className="btn-primary" style={{ padding: '8px 16px', fontSize: '14px', width: '100%' }}>Claim Upgrade</button>
+                                <button
+                                    className="btn-primary"
+                                    style={{ padding: '8px 16px', fontSize: '14px', width: '100%' }}
+                                    onClick={() => toast('Upgrade claims open at the end of your cycle. Our team will reach out!', { icon: '🚀' })}
+                                >
+                                    Claim Upgrade
+                                </button>
                             ) : (
                                 <span style={{ fontSize: '13px', color: 'var(--color-text-secondary)' }}>Eligible for free upgrade after {monthsUntilUpgrade} payments.</span>
                             )}
@@ -95,7 +110,13 @@ export default function DashboardPage() {
                             Due on {MOCK_RENTAL.nextPaymentDate.toLocaleDateString('en-IN', { day: 'numeric', month: 'long' })}
                         </div>
                     </div>
-                    <button className="btn-primary" style={{ width: '100%', marginTop: '32px', background: 'var(--color-surface-3)', color: 'white' }}>Pay Now</button>
+                    <button
+                        className="btn-primary"
+                        style={{ width: '100%', marginTop: '32px', background: 'var(--color-surface-3)', color: 'white' }}
+                        onClick={() => toast('Rent payment simulation — autopay is already active on this account.', { icon: '💳' })}
+                    >
+                        Pay Now
+                    </button>
                 </div>
 
                 {/* Refer & Earn Card */}
@@ -107,7 +128,16 @@ export default function DashboardPage() {
                     <div style={{ background: 'var(--color-surface-1)', border: '1px dashed var(--color-border-strong)', padding: '16px', borderRadius: 'var(--radius-md)', textAlign: 'center', marginBottom: '16px' }}>
                         <span style={{ fontSize: '20px', fontWeight: '700', letterSpacing: '2px', color: 'var(--color-cosmic-orange)' }}>UPGRADE1000</span>
                     </div>
-                    <button className="btn-primary" style={{ width: '100%', fontSize: '14px' }}>Copy Link</button>
+                    <button
+                        className="btn-primary"
+                        style={{ width: '100%', fontSize: '14px' }}
+                        onClick={() => {
+                            navigator.clipboard.writeText('UPGRADE1000');
+                            toast.success('Referral code copied to clipboard!');
+                        }}
+                    >
+                        Copy Link
+                    </button>
                 </div>
             </div>
 

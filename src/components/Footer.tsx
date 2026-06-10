@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Mail } from 'lucide-react';
+import NewsletterForm from './NewsletterForm';
 
 const FOOTER_LINKS = {
   'Devices': [
@@ -41,16 +41,7 @@ export default function Footer() {
             <p style={{ color: 'var(--color-text-secondary)', fontSize: '15px', lineHeight: '1.6', marginBottom: '24px' }}>
               Own the experience, not the device. India's premium Apple device rental platform. Let's make tech accessible.
             </p>
-            <div style={{ display: 'flex', gap: '8px', maxWidth: '100%', alignItems: 'center', background: 'var(--color-surface-2)', padding: '4px', borderRadius: 'var(--radius-pill)', border: '1px solid var(--glass-border)' }}>
-              <input 
-                type="email" 
-                placeholder="Join Newsletter" 
-                style={{ background: 'transparent', border: 'none', color: 'white', padding: '10px 16px', outline: 'none', width: '100%', fontSize: '14px' }}
-              />
-              <button aria-label="Subscribe" style={{ background: 'var(--color-cosmic-orange)', border: 'none', color: 'white', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', flexShrink: 0 }}>
-                <Mail size={16} />
-              </button>
-            </div>
+            <NewsletterForm />
           </div>
 
           {/* Links Columns */}
