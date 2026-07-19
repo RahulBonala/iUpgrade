@@ -92,7 +92,7 @@ button {
 
 .btn-primary {
   background: var(--color-cosmic-orange);
-  color: white;
+  color: #000000; /* 7.4:1 on the orange pill; white was 2.85:1 */
   padding: 12px 24px;
   border-radius: 980px; /* Pill shape */
   border: none;

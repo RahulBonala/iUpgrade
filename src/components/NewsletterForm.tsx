@@ -29,7 +29,7 @@ export default function NewsletterForm() {
         onChange={(e) => setEmail(e.target.value)}
         style={{ background: 'transparent', border: 'none', color: 'white', padding: '10px 16px', outline: 'none', width: '100%', fontSize: '14px' }}
       />
-      <button type="submit" aria-label="Subscribe" style={{ background: 'var(--color-cosmic-orange)', border: 'none', color: 'white', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', flexShrink: 0 }}>
+      <button type="submit" aria-label="Subscribe" style={{ background: 'var(--color-cosmic-orange)', border: 'none', color: '#000000', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', flexShrink: 0 }}>
         <Mail size={16} />
       </button>
     </form>

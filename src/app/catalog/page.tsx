@@ -55,7 +55,7 @@ export default function Catalog() {
                 border: '1px solid',
                 borderColor: activeCategory === cat.value ? 'var(--color-cosmic-orange)' : 'rgba(255,255,255,0.15)',
                 background: activeCategory === cat.value ? 'var(--color-cosmic-orange)' : 'transparent',
-                color: activeCategory === cat.value ? 'white' : 'var(--color-text-secondary)',
+                color: activeCategory === cat.value ? '#000000' : 'var(--color-text-secondary)',
                 cursor: 'pointer',
                 fontWeight: '500',
                 fontSize: '14px',
