@@ -9,7 +9,7 @@ const STEPS = [
     title: 'Choose Your Device',
     desc: 'Browse iPhone, MacBook, Watch & AirPods. Pick your storage and color. See exactly what you pay monthly — no surprises.',
     icon: '📱',
-    color: '#ff5f1f',
+    color: '#ff6b1a',
   },
   {
     number: '02',

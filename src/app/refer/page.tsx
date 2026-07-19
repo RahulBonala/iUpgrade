@@ -13,7 +13,7 @@ export default function ReferPage() {
 
     return (
         <main className="container" style={{ paddingTop: '120px', paddingBottom: '120px', maxWidth: '800px', textAlign: 'center' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '80px', height: '80px', borderRadius: '50%', background: 'rgba(255, 95, 31, 0.1)', color: 'var(--color-cosmic-orange)', marginBottom: '24px' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '80px', height: '80px', borderRadius: '50%', background: 'rgba(255, 107, 26, 0.1)', color: 'var(--color-cosmic-orange)', marginBottom: '24px' }}>
                 <Wallet size={40} />
             </div>
             

@@ -13,7 +13,7 @@ export default function SupportPage() {
                 {/* Contact Options */}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '24px', marginBottom: '80px' }}>
                     <div className="glass" style={{ padding: '32px 24px', borderRadius: 'var(--radius-md)', textAlign: 'center' }}>
-                        <div style={{ width: '48px', height: '48px', background: 'rgba(255, 95, 31, 0.1)', color: 'var(--color-cosmic-orange)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
+                        <div style={{ width: '48px', height: '48px', background: 'rgba(255, 107, 26, 0.1)', color: 'var(--color-cosmic-orange)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
                             <MessageSquare size={24} />
                         </div>
                         <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '8px' }}>Live Chat</h3>
@@ -22,7 +22,7 @@ export default function SupportPage() {
                     </div>
                     
                     <div className="glass" style={{ padding: '32px 24px', borderRadius: 'var(--radius-md)', textAlign: 'center' }}>
-                        <div style={{ width: '48px', height: '48px', background: 'rgba(255, 95, 31, 0.1)', color: 'var(--color-cosmic-orange)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
+                        <div style={{ width: '48px', height: '48px', background: 'rgba(255, 107, 26, 0.1)', color: 'var(--color-cosmic-orange)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
                             <Mail size={24} />
                         </div>
                         <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '8px' }}>Email Support</h3>
@@ -31,7 +31,7 @@ export default function SupportPage() {
                     </div>
                     
                     <div className="glass" style={{ padding: '32px 24px', borderRadius: 'var(--radius-md)', textAlign: 'center' }}>
-                        <div style={{ width: '48px', height: '48px', background: 'rgba(255, 95, 31, 0.1)', color: 'var(--color-cosmic-orange)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
+                        <div style={{ width: '48px', height: '48px', background: 'rgba(255, 107, 26, 0.1)', color: 'var(--color-cosmic-orange)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
                             <Phone size={24} />
                         </div>
                         <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '8px' }}>Call Us</h3>

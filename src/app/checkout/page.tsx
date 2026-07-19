@@ -83,7 +83,7 @@ export default function CheckoutPage() {
             name: 'iUpgrade',
             description: `Rental Checkout`,
             prefill: { contact: phone },
-            theme: { color: '#ff5f1f' },
+            theme: { color: '#ff6b1a' },
             handler: (response: { razorpay_payment_id?: string }) => {
                 const orderId = response.razorpay_payment_id || 'pay_' + Math.random().toString(36).substring(2, 11);
                 clearCart();
